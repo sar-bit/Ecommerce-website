@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect, useCallback, useState } from "react";
 import * as _ from "lodash";
 import { connect } from "react-redux";
 import { Row, Col } from "react-bootstrap";
@@ -8,7 +8,14 @@ import "./HomeScreenStyles.css";
 import MiniProductCard from "../../components/productcard/MiniProductCard";
 import Category from "../../components/category/Category";
 
-const HomeScreen = ({ getProduct, productInfo, categoryInfo, getCategory }) => {
+const HomeScreen = ({
+  getProduct,
+  productInfo,
+  categoryInfo,
+  getCategory,
+  addProducttoCart,
+  cart,
+}) => {
   // useCallback(() => {
   //   getProduct()
 
@@ -20,25 +27,26 @@ const HomeScreen = ({ getProduct, productInfo, categoryInfo, getCategory }) => {
   // }, [categoryInfo]);
 
   useEffect(() => {
-   getProduct()
-    getCategory()
+    getProduct();
+    getCategory();
   }, []);
-  console.log(categoryInfo, "categoryInfo");
 
-  console.log(productInfo, "productInfo");
   return (
     <div>
       <Container>
         <div className="content">
           <Row>
             {categoryInfo &&
-              categoryInfo.map((item) => <Category name={item} />)} 
+              categoryInfo.map((item) => <Category name={item} />)}
 
-             <Row>
+            <Row>
               {productInfo &&
                 productInfo.map((item, index) => (
                   <Col>
-                    <MiniProductCard productdetail={item} />
+                    <MiniProductCard
+                      productdetail={item}
+                      addProducttoCart={addProducttoCart}
+                    />
                   </Col>
                 ))}
             </Row>
@@ -52,15 +60,19 @@ const HomeScreen = ({ getProduct, productInfo, categoryInfo, getCategory }) => {
 const mapStateToProps = ({ product = {} }) => {
   const productInfo = _.get(product, "productInfo", []);
   const categoryInfo = _.get(product, "categoryInfo", []);
+  const cart = _.get(product, "cart", []);
   return {
     productInfo,
     categoryInfo,
+    cart,
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
   getProduct: (data) => dispatch({ type: "getProductcalled", payload: data }),
   getCategory: (data) => dispatch({ type: "getCategorycalled", payload: data }),
+  addProducttoCart: (data) =>
+    dispatch({ type: "addProducttoCartcalled", payload: data }),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);

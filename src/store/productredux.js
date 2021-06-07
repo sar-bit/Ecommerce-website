@@ -7,7 +7,8 @@ const userslice = createSlice({
     productInfo: [],
     categoryInfo: [],
     cartInfo: [],
-    singleProduct:[],
+    singleProduct: [],
+    cart: [],
   },
   reducers: {
     productSuccess: (state, action) => {
@@ -34,9 +35,22 @@ const userslice = createSlice({
         singleProduct: action.payload,
       };
     },
+
+    addtoCartSuccess: (state, action) => {
+
+      return {
+        ...state,
+        cart: [...state.cart,action.payload],
+      };
+    },
   },
 });
 export default userslice.reducer;
 
-export const { productSuccess, categorySuccess, cartSuccess,singleproductSuccess } =
-  userslice.actions;
+export const {
+  productSuccess,
+  categorySuccess,
+  cartSuccess,
+  singleproductSuccess,
+  addtoCartSuccess,
+} = userslice.actions;

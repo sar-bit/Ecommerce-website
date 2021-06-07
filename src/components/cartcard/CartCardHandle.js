@@ -1,16 +1,15 @@
-import React, { Fragment, useEffect } from "react";
+import React, { useEffect } from "react";
 import * as _ from "lodash";
 import { connect } from "react-redux";
 import CartCard from "../../components/cartcard/CartCard";
 import Container from "@material-ui/core/Container";
-import Card from "@material-ui/core/Card";
-import { Row, Col } from "react-bootstrap";
+
 
 const CartCardHandle = ({productId,singleProduct,getSingleProduct,quantity}) => {
   useEffect(()=>{
     getSingleProduct({productId});
   },[])
- console.log(singleProduct,'singleProductsingleProduct')
+ 
   return (
     <Container >
       

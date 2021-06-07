@@ -4,6 +4,7 @@ import {
   categorySuccess,
   cartSuccess,
   singleproductSuccess,
+  addtoCartSuccess,
 } from "./productredux";
 import Api from "./../services/ApiCaller";
 
@@ -51,6 +52,17 @@ export function* getSingleProduct(api, { payload = {} }) {
   } catch (error) {
     console.log(error);
   } finally {
+  }
+}
+
+export function* addProducttoCart(api,{payload = {} }){
+  try{
+    console.log(payload,'addtocartpayload')
+    yield put(addtoCartSuccess(payload.productdetail));
+  }catch(error){
+
+  }finally{
+
   }
 }
 

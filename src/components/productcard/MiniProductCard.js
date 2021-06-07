@@ -7,20 +7,14 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 
-const useStyles = makeStyles({
-    root: {
-      maxWidth: 100,
-    },
-    media: {
-      height: 140,
-    },
-  });
 
-const MiniProductCard = ({productdetail}) => {
-    const classes = useStyles();
+
+const MiniProductCard = ({productdetail,addProducttoCart}) => {
+  
     const {image,title,price, description} = productdetail || {};
-   // console.log(productdetail,'productdetail')
+   
   return (
   <Card className="cardarea">
  <CardActionArea>
@@ -34,9 +28,13 @@ const MiniProductCard = ({productdetail}) => {
             {title.substring(0,20)}
           </div>
           <Typography variant="body2" color="textSecondary" component="p">
-          {description.substring(0,30)}
+          {description.substring(0,25)}
           </Typography>
+          <div style={{display:'flex', marginTop:'5px', marginBottom:'5px'}}>
           <div className="pricelable">{price}$</div>
+          <div className='carticon' onClick={()=>addProducttoCart({productdetail})}><AddShoppingCartIcon/></div>
+          </div>
+          
         </CardContent>
       </CardActionArea>
    

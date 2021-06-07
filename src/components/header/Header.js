@@ -1,9 +1,13 @@
 import React, { Fragment, useEffect } from "react";
 import "./HeaderStyles.css";
 import Link from "@material-ui/core/Link";
+import { useSelector } from "react-redux";
 
 const Header = ({ history }) => {
-  console.log(history, "historyhistory");
+
+  const localcart = useSelector((state) => state.product.cart);
+  const cartlength = localcart && localcart.length;
+
   return (
     <div className="headerarea">
       <div className="headerlabel">
@@ -11,8 +15,11 @@ const Header = ({ history }) => {
           Home
         </Link>
       </div>
-      <div className="headerlabel">
+      <div className="headerlabel2">
         <Link href="/cart">Cart</Link>
+      </div>
+      <div className="cartlength">
+        {cartlength}
       </div>
     </div>
   );

@@ -5,24 +5,24 @@ import CartCard from "../../components/cartcard/CartCard";
 import Container from "@material-ui/core/Container";
 import Card from "@material-ui/core/Card";
 import { Row, Col } from "react-bootstrap";
-import CartCardHandle from "../../components/cartcard/CartCardHandle";
-import commonButton from "../../components/commonButton/Button";
 import Category from "../../components/category/Category";
-import { useHistory } from "react-router-dom";
 import PaymentDetailCard from "../../components/paymentdetail/PaymentDetailCard";
+import { useSelector } from "react-redux";
 
-const Checkout = ({ getCart, cartInfo,singleProduct }) => {
-  const history = useHistory();
+const Checkout = ({ getCart, cartInfo, singleProduct }) => {
+
+
+  const localcart = useSelector((state) => state.product.cart);
   useEffect(() => {
     getCart();
   }, []);
   const { products } = cartInfo || {};
-  console.log(singleProduct, "singleProduct");
+
   return (
     <Container maxWidth="md">
       <div style={{ marginBottom: "15px", marginTop: "15px" }}>
-        <Row >
-          <Col lg={6} style={{marginBottom:"15px"}}>
+        <Row>
+          <Col lg={6} style={{ marginBottom: "15px" }}>
             <Card>
               <div style={{ padding: "15px" }}>
                 <div
@@ -39,13 +39,15 @@ const Checkout = ({ getCart, cartInfo,singleProduct }) => {
               </div>
             </Card>
           </Col>
-          <Col lg={6} style={{marginBottom:"15px"}}>
-            <PaymentDetailCard products={products} singleProduct={singleProduct}/>
+          <Col lg={6} style={{ marginBottom: "15px" }}>
+            <PaymentDetailCard
+              products={localcart}
+              singleProduct={singleProduct}
+            />
           </Col>
-       
         </Row>
         <Row>
-          <Col lg={6} style={{marginBottom:"15px"}}>
+          <Col lg={6} style={{ marginBottom: "15px" }}>
             <Card>
               <div style={{ padding: "15px" }}>
                 <div
@@ -58,17 +60,26 @@ const Checkout = ({ getCart, cartInfo,singleProduct }) => {
                   ORDER DETAILS
                 </div>
 
-                {products &&
+                {/* {products &&
                   products.map((item) => (
                     <CartCardHandle
                       productId={item.productId}
                       quantity={item.quantity}
                     />
+                  ))} */}
+                {localcart &&
+                  localcart.map((item) => (
+                    <CartCard
+                      image={item.image}
+                      title={item.title}
+                      price={item.price}
+                      quantity={1}
+                    />
                   ))}
               </div>
             </Card>
           </Col>
-          <Col lg={6} style={{marginBottom:"15px"}}>
+          <Col lg={6} style={{ marginBottom: "15px" }}>
             <Card>
               <div style={{ padding: "15px" }}>
                 <div
@@ -81,13 +92,11 @@ const Checkout = ({ getCart, cartInfo,singleProduct }) => {
                   PAYMENT OPTION
                 </div>
               </div>
-<div style={{marginLeft:'40%'}}>
-<Category name='Pay Now'/>
-</div>
-            
+              <div style={{ marginLeft: "40%" }}>
+                <Category name="Pay Now" />
+              </div>
             </Card>
           </Col>
-         
         </Row>
       </div>
     </Container>

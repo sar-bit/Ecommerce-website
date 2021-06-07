@@ -14,10 +14,35 @@
     margin: 5px;
 }
 
+.headerlabel2{
+    color: rgb(252, 252, 252);
+    font-size: 25px;
+    font-weight: 600;
+    margin: 5px;
+    position: absolute; 
+    right: 120px; 
+}
+
 .MuiTypography-colorPrimary{
     color: rgb(252, 252, 252);
 }
 
 .MuiTypography-root{
     margin: 10px;
+}
+
+.cartlength{
+background-color: white;
+position: absolute;
+right: 100px;
+top: 5px;
+border-radius: 12px;
+height: 25px;
+width: auto;
+padding-bottom: 4px;
+font-size: 18px;
+font-weight: 600;
+padding-left: 4px;
+color: coral;
+padding-right: 4px;
 }

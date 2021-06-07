@@ -1,9 +1,7 @@
-import React, { Fragment } from "react";
+import React from "react";
 import "./CartCardStyles.css";
-import Card from "@material-ui/core/Card";
-
 import Container from "@material-ui/core/Container";
-import footware from "../../features/images/footware.jpg";
+
 
 const CartCard = ({image,title,price,quantity}) => {
   // console.log(productdetail,'productdetail')

@@ -1,19 +1,20 @@
-import React, { Fragment } from "react";
+import React, {useEffect, useState} from "react";
 import Card from "@material-ui/core/Card";
 
-import Container from "@material-ui/core/Container";
-import footware from "../../features/images/footware.jpg";
 
-const PaymentDetailCard = ({ products, singleProduct }) => {
-  const { price } = singleProduct || {};
+const PaymentDetailCard = ({ products }) => {
+const [length, setlength]= useState('');
   let total = 0;
-  let length = products.length;
+
+  useEffect(()=>{
+    setlength(products.length) 
+  },[])
   return (
     <Card>
       <div style={{ padding: "15px" }}>
         {products &&
           products.map((i) => {
-            total = total + i.quantity * price;
+            total = total + 1 * i.price;
           })}
         <div
           style={{

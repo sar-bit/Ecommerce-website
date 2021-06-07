@@ -1,0 +1,24 @@
+
+.smallcardarea{
+    display: flex;
+    border-bottom: 2px solid #f1f1f1;
+    padding: 15px;
+}
+
+.imagearea{
+    width:100px;
+    height: 100px;
+}
+
+.imagearea img{
+    width: 100%;
+    height: 100%;
+}
+
+.detailsarea{
+    margin-left: 10px;
+}
+
+.chead{
+font-weight: 600;
+}

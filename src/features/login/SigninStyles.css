@@ -1,0 +1,14 @@
+.signinarea {
+  width: 300px;
+  top: 100px;
+  /* left: 200px; */
+  position: absolute;
+  margin-left: 8%;
+  padding: 15px;
+}
+
+.signincontainer {
+  width: 100%;
+
+  font-family: "Roboto", sans-serif;
+}

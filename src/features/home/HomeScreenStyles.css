@@ -1,0 +1,19 @@
+.content{
+    width: 100%;
+    margin-top: 30px;
+  }
+
+ .leftsidebar
+{
+  border-right: 1px solid #f1f1f1;
+}
+
+.homecardarea{
+    display: flex;
+   
+}
+
+.homecardarea2{
+    width: 400px;
+}
+

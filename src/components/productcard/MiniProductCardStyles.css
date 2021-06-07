@@ -1,0 +1,25 @@
+.cardarea{
+    width:160px;
+    height: 250px;
+    margin: 10px;
+}
+
+.productimg{
+    width: 150px;
+    height: 110px;
+}
+
+.cardtitle{
+    text-align: left;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.pricelable{
+    font-size: 14px;
+    font-weight: 600;
+    background-color: cornflowerblue; 
+    width: 60px;
+    padding: 5px;
+    border-radius: 4px;
+}
